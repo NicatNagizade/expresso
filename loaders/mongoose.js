@@ -13,4 +13,4 @@ db.once('open', function () {
 
 });
 
-module.exports = mongoose
+module.exports = {...mongoose, db}
