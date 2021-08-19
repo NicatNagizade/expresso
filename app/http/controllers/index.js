@@ -9,7 +9,7 @@ class Controller {
         this.next = next
     }
     currentTime() {
-        return moment(moment.now()).format('YYYY-MM-DD H:mm:ss') 
+        return moment(this.now()).format('YYYY-MM-DD H:mm:ss')
     }
     now() {
         return moment.now()
@@ -22,12 +22,12 @@ class Controller {
             this.error(error)
         }
     }
-    response({status, data}) {
+    response({ status, data }) {
         this.res.status(status).json(data)
-        this.logRequest({status, data})
+        this.logRequest({ status, data })
     }
     success(response) {
-        this.response({status: 200, data: response})
+        this.response({ status: 200, data: response })
     }
     error(error) {
         const { name } = error
@@ -56,7 +56,7 @@ class Controller {
                 this.unexpectedErrors(error)
         }
         const { status, message, errors } = data
-        this.response({status: status, data: {message, errors}})
+        this.response({ status: status, data: { message, errors } })
     }
     unexpectedErrors(error) {
         const data = {
@@ -65,19 +65,15 @@ class Controller {
         }
         db.collection('unexpectedErrors').insertOne(data)
     }
-    logRequest({status, data}) {
-        let responseBody = null
+    logRequest({ status, data }) {
         const { ip, method, originalUrl, query, body } = this.req
         const created_at = this.currentTime()
         const time = this.now() - this.startTime
-        if(method == 'GET' && status < 300) {
-            responseBody = null
-        } else {
-            responseBody = data
-        }
+        const response = (method == 'GET' && status < 300) ? null : data
         const log = {
-            ip, method, originalUrl, query, body,
-            status, responseBody, time, created_at
+            ip, method, endpoint: originalUrl,
+            status, time, query, payload: body,
+            response, created_at
         }
         db.collection('logRequests').insertOne(log)
     }
