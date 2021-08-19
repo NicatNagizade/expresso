@@ -1,7 +1,7 @@
 const { db } = require("../../../loaders/mongoose")
 const moment = require('moment')
 
-class Controller {
+class BaseController {
     constructor(req, res, next) {
         this.startTime = this.now()
         this.req = req
@@ -43,8 +43,8 @@ class Controller {
             case 'ValidatorError':
                 data = {
                     status: 422,
-                    message: 'The given data was invalid.',
-                    errors: errors
+                    message: error.message,
+                    errors: error.errors
                 }
                 break
             default:
@@ -79,4 +79,4 @@ class Controller {
     }
 }
 
-module.exports = Controller
+module.exports = BaseController

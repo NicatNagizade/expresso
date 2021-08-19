@@ -1,8 +1,10 @@
+const BaseController = require('./')
 const ExampleService = require('../../services/example')
-const Controller = require('./')
+const ExampleValidator = require('../validation/example')
 const service = new ExampleService()
+const validator = new ExampleValidator()
 
-class ExampleController extends Controller {
+class ExampleController extends BaseController {
     async index() {
         const { query } = this.req
         const response = await service.index(query)
@@ -15,12 +17,14 @@ class ExampleController extends Controller {
     }
     async store() {
         const { body } = this.req
-        const response = await service.store(body)
+        const validated = validator.store(body).validated()
+        const response = await service.store(validated)
         this.success(response)
     }
     async update() {
         const { body, params } = this.req
-        const response = await service.update(params.id, body)
+        const validated = validator.update(body).validated()
+        const response = await service.update(params.id, validated)
         this.success(response)
     }
     async destroy() {
