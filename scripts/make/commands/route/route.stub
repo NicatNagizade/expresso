@@ -1,0 +1,11 @@
+const express = require('express')
+const router = express.Router()
+const {Name}Controller = require('../../app/http/controllers/{name}')
+
+router.get('', (...params) => { new {Name}Controller(...params).method('index') })
+router.post('', (...params) => { new {Name}Controller(...params).method('store') })
+router.get('/:id', (...params) => { new {Name}Controller(...params).method('show') })
+router.put('/:id', (...params) => { new {Name}Controller(...params).method('update') })
+router.delete('/:id', (...params) => { new {Name}Controller(...params).method('destroy') })
+
+module.exports = router

@@ -8,6 +8,14 @@ class BaseController {
         this.res = res
         this.next = next
     }
+    static service(fileName) {
+        const Service = require('../../services/' + fileName)
+        return new Service
+    }
+    static validator(fileName) {
+        const Validator = require('../validators/' + fileName)
+        return Validator
+    }
     currentTime() {
         return moment(this.now()).format('YYYY-MM-DD H:mm:ss')
     }
