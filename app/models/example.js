@@ -5,7 +5,8 @@ const { Schema } = mongoose
 const ExampleSchema = Schema({
     // name:String
 }, {
-    strict: false
+    strict: false,
+    versionKey: false
 })
 ExampleSchema.plugin(BaseModel)
 const Example = mongoose.model('Example', ExampleSchema)
