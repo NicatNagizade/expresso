@@ -14,7 +14,7 @@ class BaseController {
     }
     static validator(fileName) {
         const Validator = require('../validators/' + fileName)
-        return Validator
+        return new Validator
     }
     currentTime() {
         return moment(this.now()).format('YYYY-MM-DD H:mm:ss')
@@ -61,12 +61,12 @@ class BaseController {
                     message: error.message || 'Something went wrong',
                     errors: {}
                 }
-                this.unexpectedErrors(error)
+                this.unexpectedError(error)
         }
         const { status, message, errors } = data
         this.response({ status: status, data: { message, errors } })
     }
-    unexpectedErrors(error) {
+    unexpectedError(error) {
         const data = {
             stack: error.stack,
             created_at: this.currentTime()
