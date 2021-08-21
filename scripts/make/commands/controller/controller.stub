@@ -1,4 +1,4 @@
-const BaseController = require('./')
+const BaseController = require('./baseController')
 const Service = BaseController.service('{name}')
 const Validator = BaseController.validator('{name}')
 
