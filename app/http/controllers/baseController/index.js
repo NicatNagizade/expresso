@@ -18,12 +18,10 @@ class BaseController {
         this.time = time
     }
     static service(fileName) {
-        const Service = require('../../../services/' + fileName)
-        return new Service
+        return require('../../../services/' + fileName)
     }
     static validator(fileName) {
-        const Validator = require('../../validators/' + fileName)
-        return new Validator
+        return require('../../validators/' + fileName)
     }
     async method(m) {
         try {

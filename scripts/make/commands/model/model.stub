@@ -1,13 +1,12 @@
 const mongoose = require('mongoose')
-const BaseModel = require('./')
+const BaseModel = require('./baseModel')
 const { Schema } = mongoose
 
-const {Name}Schema = Schema({
+const ModelSchema = Schema({
     // name:String
 }, {
     strict: false,
     versionKey: false
 })
-{Name}Schema.plugin(BaseModel)
-const {Name} = mongoose.model('{Name}', {Name}Schema)
-module.exports = {Name}
+ModelSchema.plugin(BaseModel)
+module.exports = mongoose.model('{Name}', ModelSchema)

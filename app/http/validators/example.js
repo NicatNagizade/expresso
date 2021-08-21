@@ -1,4 +1,4 @@
-const BaseValidator = require('./')
+const BaseValidator = require('./baseValidator')
 
 class ExampleValidator extends BaseValidator {
     store(data) {
