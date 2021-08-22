@@ -1,0 +1,21 @@
+import express, { Request, Response, NextFunction } from 'express'
+const router = express.Router()
+import Controller from '../../app/http/controllers/example'
+
+router.get('/', (req: Request, res: Response, next: NextFunction) => {
+    new Controller(req, res, next).method('index')
+})
+router.post('/', (req: Request, res: Response, next: NextFunction) => {
+    new Controller(req, res, next).method('store')
+})
+router.get('/:id', (req: Request, res: Response, next: NextFunction) => {
+    new Controller(req, res, next).method('show')
+})
+router.put('/:id', (req: Request, res: Response, next: NextFunction) => {
+    new Controller(req, res, next).method('update')
+})
+router.delete('/:id', (req: Request, res: Response, next: NextFunction) => {
+    new Controller(req, res, next).method('destroy')
+})
+
+module.exports = router

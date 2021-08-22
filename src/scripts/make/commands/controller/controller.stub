@@ -1,0 +1,36 @@
+import BaseController from './baseController'
+const {Name}Service = BaseController.service('{name}')
+const {Name}Validator = BaseController.validator('{name}')
+
+class {Name}Controller extends BaseController {
+    async index() {
+        const { query } = this.req
+        const response = await (new {Name}Service).index(query)
+        this.success(response)
+    }
+    async show() {
+        const { params } = this.req
+        const response = await (new {Name}Service).show(params.id)
+        this.success(response)
+    }
+    async store() {
+        const { body } = this.req
+        const validated = (new {Name}Validator).store(body).validated()
+        const response = await (new {Name}Service).store(validated)
+        this.success(response)
+    }
+    async update() {
+        const { body, params } = this.req
+        const validated = (new {Name}Validator).update(body).objectId(params.id).validated()
+        const response = await (new {Name}Service).update(params.id, validated)
+        this.success(response)
+    }
+    async destroy() {
+        const { params } = this.req
+        const response = await (new {Name}Service).objectId(params.id).destroy(params.id)
+        this.success(response)
+    }
+
+}
+
+export default {Name}Controller

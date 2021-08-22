@@ -2,12 +2,13 @@
   "name": "expresso",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./index.js",
-    "dev": "nodemon ./index.js",
-    "make": "node ./scripts/make"
+    "start": "tsc && node .",
+    "dev": "nodemon ./src/index.ts",
+    "build": "tsc -p .",
+    "make": "npx ts-node ./src/scripts/make"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +26,13 @@
     "validatorjs": "^3.22.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "@types/cors": "^2.8.12",
+    "@types/crypto-js": "^4.0.2",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.7.1",
+    "nodemon": "^2.0.12",
+    "ts-node": "^10.2.1",
+    "tslint": "^6.1.3",
+    "typescript": "^4.3.5"
   }
 }
