@@ -9,7 +9,7 @@ const run = async () => {
     })
     if (commands.length > 1) {
         const [command, ...args] = commands
-        const commandPath = path.join(__dirname, 'commands', command, 'index.ts')
+        const commandPath = path.join(__dirname, 'commands', command)
         if(fs.existsSync(commandPath)) {
             require(commandPath)(args)
         }
