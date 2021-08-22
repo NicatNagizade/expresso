@@ -1,4 +1,4 @@
-const BaseValidator = require('./baseValidator')
+import BaseValidator from './baseValidator'
 
 class ExampleValidator extends BaseValidator {
     store(data: {}) {

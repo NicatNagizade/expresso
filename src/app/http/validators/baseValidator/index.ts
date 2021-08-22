@@ -1,8 +1,8 @@
 import ValidatorError from "../../../exceptions/ValidatorError"
 
-const Validator = require('validatorjs')
-const path = require('path')
-const { isValidObjectId } = require('mongoose')
+import Validator from 'validatorjs'
+import path from 'path'
+import { isValidObjectId } from 'mongoose'
 // Validator.useLang('az')
 const validatorLang = require(path.join(__dirname, '../../../../resources/lang/az/validator'))
 
@@ -48,4 +48,4 @@ class BaseValidator {
     }
 }
 
-module.exports = BaseValidator
+export default BaseValidator
