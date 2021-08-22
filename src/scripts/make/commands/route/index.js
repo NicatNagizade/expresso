@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const stubPath = path.join(__dirname, './route.stub')
-const commandPath = path.join(__dirname, '../../../../', 'routes/')
+const commandPath = path.join(__dirname, '../../../../', 'routes/api/')
 
 const route = (args) => {
     const firstParam = args[0]
@@ -18,7 +18,7 @@ const route = (args) => {
             fs.mkdirSync(commandPath + dirPath.join('/'))
         }
     }
-    const fullPath = commandPath + firstParam + '.js'
+    const fullPath = commandPath + firstParam + '.ts'
     fs.writeFileSync(fullPath, text)
     console.log(fullPath + ' is created')
 }

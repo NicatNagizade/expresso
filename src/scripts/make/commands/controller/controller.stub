@@ -27,7 +27,7 @@ class {Name}Controller extends BaseController {
     }
     async destroy() {
         const { params } = this.req
-        const response = await (new {Name}Service).objectId(params.id).destroy(params.id)
+        const response = await (new {Name}Service).destroy(params.id)
         this.success(response)
     }
 

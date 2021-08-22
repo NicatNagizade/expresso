@@ -7,18 +7,25 @@ const run = async () => {
     process.argv.slice(2).forEach((val) => {
         commands.push(val)
     })
-    if (commands.length > 1) {
-        const [command, ...args] = commands
-        const commandPath = path.join(__dirname, 'commands', command)
-        if(fs.existsSync(commandPath)) {
-            require(commandPath)(args)
-        }
-        else {
-            console.log('Command is not defined')
-        }
-    } else {
-        console.log('Needs 2 arguments')
+    if (commands.length < 2) {
+        console.log('Needs at least 2 arguments')
+        return
     }
+    const [command, ...args] = commands
+    if (command == 'full') {
+        const fullCommands = ['route', 'controller', 'service', 'validator', 'model']
+        fullCommands.forEach(c => {
+            const commandPath = path.join(__dirname, 'commands', c)
+            require(commandPath)(args)
+        })
+        return
+    }
+    const commandPath = path.join(__dirname, 'commands', command)
+    if (fs.existsSync(commandPath)) {
+        require(commandPath)(args)
+        return
+    }
+    console.log('Command is not defined')
 }
 
 run()
