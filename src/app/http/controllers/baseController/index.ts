@@ -27,8 +27,8 @@ class BaseController {
     }
     async method(method: string) {
         try {
-            const thisClass: any = this
-            await thisClass[method]()
+            // @ts-ignore
+            await this[method]()
             return this
         } catch (error) {
             this.error(error)
