@@ -1,5 +1,5 @@
-import { db } from '../../../../loaders/mongoose'
-import time from '../../../../utils/time'
+import { db } from '../../loaders/mongoose'
+import time from '../../utils/time'
 import logRequest from './logRequest'
 import logError from './logError'
 import responseErrorData from './responseErrorData'
@@ -18,12 +18,6 @@ class BaseController {
         }
         this.db = db
         this.time = time
-    }
-    static service(fileName: string) {
-        return require('../../../services/' + fileName)
-    }
-    static validator(fileName: string) {
-        return require('../../validators/' + fileName)
     }
     async method(method: string) {
         try {

@@ -1,6 +1,6 @@
-import BaseController from './baseController'
-const ExampleService = BaseController.service('example')
-const ExampleValidator = BaseController.validator('example')
+import BaseController from '../../../lib/controller'
+import ExampleService from '../../services/example'
+import ExampleValidator from '../validators/example'
 
 class ExampleController extends BaseController {
     async index() {

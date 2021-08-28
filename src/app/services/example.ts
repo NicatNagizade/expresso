@@ -2,11 +2,11 @@ import Example from '../models/example'
 
 class ExampleService {
     async index(query = {}) {
-        const { page, ...restQuery } : any = query
+        const { page, ...restQuery }: any = query
         const data = await Example.find(restQuery).paginate({ page })
         return data
     }
-    async show(id: number) {
+    async show(id: any) {
         const data = await Example.findById(id)
         return data
     }
@@ -14,14 +14,14 @@ class ExampleService {
         const data = await Example.create(body)
         return data
     }
-    async update(id: number, body: {}) {
+    async update(id: any, body: {}) {
         const data = await Example.findByIdAndUpdate(id, body, { new: true })
         return data
     }
-    async destroy(id: number) {
+    async destroy(id: any) {
         const data = await Example.findByIdAndDelete(id)
         return data
     }
 }
 
-module.exports = ExampleService
+export default ExampleService

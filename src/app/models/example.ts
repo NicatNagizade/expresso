@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import BaseModel from './baseModel'
+import BaseModel from '../../lib/model'
 const { Schema } = mongoose
 
 const ModelSchema = new Schema({

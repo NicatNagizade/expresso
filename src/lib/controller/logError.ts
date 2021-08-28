@@ -1,4 +1,4 @@
-import BaseController from "./"
+import BaseController from "."
 
 const logError = (controller: BaseController, error: Error) => {
     const data = {

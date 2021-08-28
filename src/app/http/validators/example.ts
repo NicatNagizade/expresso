@@ -1,4 +1,4 @@
-import BaseValidator from './baseValidator'
+import BaseValidator from '../../../lib/validator'
 
 class ExampleValidator extends BaseValidator {
     store(data: {}) {
@@ -17,4 +17,4 @@ class ExampleValidator extends BaseValidator {
     }
 }
 
-module.exports = ExampleValidator
+export default ExampleValidator
