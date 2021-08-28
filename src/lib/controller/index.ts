@@ -5,12 +5,12 @@ import logError from './logError'
 import responseErrorData from './responseErrorData'
 import { Request, Response, NextFunction } from 'express'
 
-class BaseController {
+abstract class BaseController {
     startTime: number
     response: { status: number, data: any }
     db: typeof db
     time: typeof time
-    constructor(public req: Request, public res: Response, public next: NextFunction) {
+    constructor(protected req: Request, protected res: Response, protected next: NextFunction) {
         this.startTime = time.now()
         this.response = {
             status: 200,

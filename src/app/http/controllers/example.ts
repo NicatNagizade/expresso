@@ -21,7 +21,7 @@ class ExampleController extends BaseController {
     }
     async update() {
         const { body, params } = this.req
-        const validated = (new ExampleValidator).update(body).objectId(params.id).validated()
+        const validated = (new ExampleValidator).update(body).validated()
         const response = await (new ExampleService).update(params.id, validated)
         this.success(response)
     }
