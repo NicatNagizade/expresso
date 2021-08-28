@@ -1,6 +1,6 @@
-import BaseController from './baseController'
-const {Name}Service = BaseController.service('{name}')
-const {Name}Validator = BaseController.validator('{name}')
+import BaseController from '../../../lib/controller'
+import {Name}Service from '../../services/{name}'
+import {Name}Validator from '../validators/{name}'
 
 class {Name}Controller extends BaseController {
     async index() {
@@ -21,7 +21,7 @@ class {Name}Controller extends BaseController {
     }
     async update() {
         const { body, params } = this.req
-        const validated = (new {Name}Validator).update(body).objectId(params.id).validated()
+        const validated = (new {Name}Validator).update(body).validated()
         const response = await (new {Name}Service).update(params.id, validated)
         this.success(response)
     }

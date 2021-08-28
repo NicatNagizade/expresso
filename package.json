@@ -8,7 +8,7 @@
     "start": "tsc && node .",
     "dev": "nodemon ./src/index.ts",
     "build": "tsc -p .",
-    "make": "npx ts-node ./src/scripts/make"
+    "make": "npx ts-node ./src/bin/make"
   },
   "author": "",
   "license": "ISC",

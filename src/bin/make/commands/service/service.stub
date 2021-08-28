@@ -2,11 +2,11 @@ import {Name} from '../models/{name}'
 
 class {Name}Service {
     async index(query = {}) {
-        const { page, ...restQuery } : any = query
+        const { page, ...restQuery }: any = query
         const data = await {Name}.find(restQuery).paginate({ page })
         return data
     }
-    async show(id: number) {
+    async show(id: any) {
         const data = await {Name}.findById(id)
         return data
     }
@@ -14,14 +14,14 @@ class {Name}Service {
         const data = await {Name}.create(body)
         return data
     }
-    async update(id: number, body: {}) {
+    async update(id: any, body: {}) {
         const data = await {Name}.findByIdAndUpdate(id, body, { new: true })
         return data
     }
-    async destroy(id: number) {
+    async destroy(id: any) {
         const data = await {Name}.findByIdAndDelete(id)
         return data
     }
 }
 
-module.exports = {Name}Service
+export default {Name}Service
