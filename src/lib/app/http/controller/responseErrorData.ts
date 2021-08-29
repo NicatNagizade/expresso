@@ -1,4 +1,4 @@
-import { IResponseError } from "../../app/exceptions/ResponseError"
+import { IResponseError } from "../../exceptions/ResponseError"
 
 const responseErrorData = (error: IResponseError) => {
     const { name } = error

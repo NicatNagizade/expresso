@@ -1,9 +1,9 @@
 import mongoose from 'mongoose'
-import { DB_CONNECTION, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD } from '../config'
+import { env } from '../config'
 
-const usernameAndPassword = DB_USERNAME ? `${DB_USERNAME}:${DB_PASSWORD}@` : ''
+const usernameAndPassword = env('DB_USERNAME')  ? `${env('DB_USERNAME')}:${env('DB_PASSWORD')}@` : ''
 
-const mongoServer = `${DB_CONNECTION}://${usernameAndPassword}${DB_HOST}:${DB_PORT}/${DB_DATABASE}`
+const mongoServer = `${env('DB_CONNECTION')}://${usernameAndPassword}${env('DB_HOST')}:${env('DB_PORT')}/${env('DB_DATABASE')}`
 const options = { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }
 mongoose.connect(mongoServer, options);
 const db = mongoose.connection;

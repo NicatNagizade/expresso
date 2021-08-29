@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import BaseModel from '../../lib/model'
+import BaseModel from '../../lib/app/model'
 const { Schema } = mongoose
 
 const ModelSchema = new Schema({
@@ -10,4 +10,4 @@ const ModelSchema = new Schema({
     timestamps: true
 })
 ModelSchema.plugin(BaseModel)
-export default mongoose.model('Example', ModelSchema)
+export const Example = mongoose.model('Example', ModelSchema)

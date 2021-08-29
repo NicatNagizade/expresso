@@ -1,4 +1,4 @@
-import ValidatorError from "../../app/exceptions/ValidatorError"
+import ValidatorError from "../../exceptions/ValidatorError"
 
 import Validator from 'validatorjs'
 import path from 'path'

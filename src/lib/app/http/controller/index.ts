@@ -1,5 +1,5 @@
-import { db } from '../../loaders/mongoose'
-import time from '../../utils/time'
+import { db } from '../../../loaders/mongoose'
+import time from '../../../utils/time'
 import logRequest from './logRequest'
 import logError from './logError'
 import responseErrorData from './responseErrorData'
@@ -11,7 +11,7 @@ abstract class BaseController {
     db: typeof db
     time: typeof time
     constructor(protected req: Request, protected res: Response, protected next: NextFunction) {
-        this.startTime = time.now()
+        this.startTime = time.now().unix()
         this.response = {
             status: 200,
             data: null

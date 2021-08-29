@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node .",
-    "dev": "nodemon ./src/index.ts",
+    "dev": "npx nodemon ./src/index.ts",
     "build": "tsc -p .",
-    "make": "npx ts-node ./src/bin/make"
+    "make": "npx ts-node ./src/expresso/bin/make"
   },
   "author": "",
   "license": "ISC",
@@ -29,7 +29,7 @@
     "@types/cors": "^2.8.12",
     "@types/crypto-js": "^4.0.2",
     "@types/express": "^4.17.13",
-    "@types/node": "^16.7.1",
+    "@types/node": "^16.7.5",
     "@types/validatorjs": "^3.15.0",
     "nodemon": "^2.0.12",
     "ts-node": "^10.2.1",
