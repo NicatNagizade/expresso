@@ -3,31 +3,33 @@ import {Name}Service from '../../services/{name}'
 import {Name}Validator from '../validators/{name}'
 
 class {Name}Controller extends BaseController {
+    protected readonly service = new {Name}Service()
+    protected readonly validator = new {Name}Validator()
     async index() {
         const { query } = this.req
-        const response = await (new {Name}Service).index(query)
+        const response = await this.service.index(query)
         this.success(response)
     }
     async show() {
         const { params } = this.req
-        const response = await (new {Name}Service).show(params.id)
+        const response = await this.service.show(params.id)
         this.success(response)
     }
     async store() {
         const { body } = this.req
-        const validated = (new {Name}Validator).store(body).validated()
-        const response = await (new {Name}Service).store(validated)
+        const validated = this.validator.store(body).validated()
+        const response = await this.service.store(validated)
         this.success(response)
     }
     async update() {
         const { body, params } = this.req
-        const validated = (new {Name}Validator).update(body).validated()
-        const response = await (new {Name}Service).update(params.id, validated)
+        const validated = this.validator.update(body).validated()
+        const response = await this.service.update(params.id, validated)
         this.success(response)
     }
     async destroy() {
         const { params } = this.req
-        const response = await (new {Name}Service).destroy(params.id)
+        const response = await this.service.destroy(params.id)
         this.success(response)
     }
 

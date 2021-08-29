@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import './loaders'
+import './loaders/mongoose'
 import {APP_URL, APP_PORT} from './config/index'
 import routes from './loaders/route'
 import path from 'path'
